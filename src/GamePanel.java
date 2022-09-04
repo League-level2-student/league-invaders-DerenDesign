@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -99,6 +100,19 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_UP) {
+			rocketship.up();
+		}
+		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			rocketship.down();
+		}
+		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+			rocketship.left();
+		}
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			rocketship.right();
+		}
+		
 		// TODO Auto-generated method stub
 		
 	}

@@ -42,6 +42,8 @@ public class ObjectManager implements ActionListener {
 			}
 			
 		}
+			
+		rocketship.update();
 	}
 	public void draw(Graphics g) {
 		rocketship.draw(g);
@@ -73,12 +75,13 @@ public class ObjectManager implements ActionListener {
 	}
 	public void checkCollision() {
 		for(int i = 0; i < aliens.size(); i++) {
-			for(int a = 0; a < projectiles.size(); a++) {
 			if(rocketship.collisionBox.intersects(aliens.get(i).collisionBox)) {
 				aliens.get(i).isActive = false;
 				rocketship.isActive = false;
 				
 			}
+			for(int a = 0; a < projectiles.size(); a++) {
+			
 		
 		
 			if(projectiles.get(a).collisionBox.intersects(aliens.get(i).collisionBox)) {

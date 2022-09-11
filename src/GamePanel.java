@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -121,6 +122,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if(currentState == MENU){
 		    updateMenuState();
+		    
 		   // System.out.println("Action");
 		    repaint();
 		}else if(currentState == GAME){
@@ -132,6 +134,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		    //System.out.println("Action");
 		    alienSpawn.stop();
 		    repaint();
+		    rocketship = new Rocketship(250, 700, 50, 50);
+		    objectmanager = new ObjectManager(rocketship);
 		}
 		
 	}
@@ -164,7 +168,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			}
 		}
 
-		startGame();
+		
 		
 		// TODO Auto-generated method stub
 		
@@ -172,13 +176,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+			JOptionPane.showMessageDialog(null,"Press \"ENTER\" to shoot and use the arrow keys to move.");
+		}
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 		    if (currentState == END) {
 		        currentState = MENU;
+		    }
+		
+		    else if (currentState == MENU) {
+			    currentState = GAME;
+			    startGame();
+		    
 		    } else {
 		        currentState++;
 		    }
-		} 
+		}
+		
 		if (e.getKeyCode()==KeyEvent.VK_UP) {
 		   // System.out.println("UP");
 		}
@@ -195,3 +209,4 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 	
 }
+
